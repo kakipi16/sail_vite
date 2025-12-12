@@ -17,14 +17,13 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
-        @include('layouts.navigation')
-        <!-- Page Content -->
-        <main>
-            {{ $slot }}
-        </main>
-    </div>
+    @include('layouts.navigation')
+    <!-- Page Content -->
+    <main class="w-full  min-h-[calc(100vh-80px-80px)]">
+        {{ $slot }}
+    </main>
     <x-footer />
+    @stack('scripts')
 </body>
 
 </html>

@@ -27,6 +27,19 @@ class ProfileController extends Controller
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
+        $request->validate([
+            'profile_image' => 'nullable|image|max:2048',
+        ]);
+
+        if ($request->hasFile('profile_image')) {
+            $file = $request->file('profile_image');
+
+            $filename = 'user_' . $request->user()->id . '_' . time() . '.' . $file->getClientOriginalExtension();
+
+            $file->storeAs('public/profile_images', $filename);
+
+            $request->user()->profile_image = $filename;
+        }
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;

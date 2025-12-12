@@ -30,12 +30,14 @@
                     @if (Route::has('login'))
                         <nav class="flex items-center justify-end gap-4">
                             @auth
+                            <div class="w-[200px] h-[64px] bg-[#4F46E5] rounded-xl flex items-center justify-center hover:border hover:border-[#4F46E5] hover:bg-[#FFFFFF]">
                                 <a
-                                    href="{{ url('/dashboard') }}"
-                                    class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1E293B] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
+                                    href="{{ route('login') }}"
+                                    class="inline-block px-[60px] py-[18px] dark:text-[#EDEDEC] text-[#FFFFFF] rounded-sm text-xl leading-normal hover:text-[#4F46E5]"
                                 >
                                     ホーム
                                 </a>
+                            </div>
                             @else
                             <div class="w-[200px] h-[64px] bg-[#4F46E5] rounded-xl flex items-center justify-center hover:border hover:border-[#4F46E5] hover:bg-[#FFFFFF]">
                                 <a
