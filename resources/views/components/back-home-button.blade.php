@@ -1,0 +1,5 @@
+<button {{ $attributes->merge(['type' => 'button', 'class' => 'inline-flex items-center px-[60px] py-[18px] bg-[#4F46E5] text-[#FFFFFF] text-xl hover:text-[#4F46E5] border border-transparent hover:border-[#4F46E5] rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-[#FFFFFF] focus:bg-[#4F46E5] active:bg-[#4F46E5] active:text-[#FFFFFF] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 ']) }}>
+    <a href="{{route('dashboard')}}">
+        {{ $slot }}
+    </a>
+</button>

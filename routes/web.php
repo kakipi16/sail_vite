@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\googlemapsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettingsController;
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,4 +21,8 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/settings', [SettingsController::class, 'settings'])->name('profile.settings');
 
-require __DIR__.'/auth.php';
+Route::get('/googlemapsForm', [googlemapsController::class, 'googlemapsForm'])->name('googlemaps.postForm');
+
+Route::post('googlemapsForm', [googlemapsController::class, 'spotStore'])->name('SpotStore');
+
+require __DIR__ . '/auth.php';
