@@ -37,4 +37,11 @@ class googlemapsController extends Controller
         ]);
         return redirect(route('dashboard', absolute: false));
     }
+
+    public function show(): View
+    {
+        $posts = SpotPost::all();
+        return view('googlemaps.show', compact('posts'));
+    }
+    
 }

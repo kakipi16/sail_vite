@@ -1,7 +1,7 @@
 <x-app-layout>
     <main class=" w-full min-h-[calc(100vh-80px-80px)] flex items-center justify-center">
         <div class="w-full sm:max-w-md px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-            <form method="POST" action="{{ route('SpotStore') }}">
+            <form id="SpotForm" method="POST" action="{{ route('SpotStore') }}">
                 @csrf
                 <div class="flex flex-col mt-4">
                     <x-title>スポットを投稿する</x-title>
@@ -29,8 +29,8 @@
                 </div>
                 <!-- 34.63782273759663, 137.76821325948802 -->
                 <!-- Spot Location -->
-                <input type="" name="lat" value="{{ request('lat') }}">
-                <input type="" name="lng" value="{{ request('lng') }}">
+                <!-- <input type="" name="lat" value="{{ request('lat') }}">
+                <input type="" name="lng" value="{{ request('lng') }}"> -->
 
                 <!-- create button -->
                 <div class="flex">

@@ -13,13 +13,13 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/googlemapsAPI/form.js'])
 </head>
 
 <body class="font-sans antialiased">
     @include('layouts.navigation')
     <!-- Page Content -->
-    <main class="w-full  min-h-[calc(100vh-80px-80px)]">
+    <main class="w-full  min-h-[calc(100vh-80px-80px)] bg-[#F9FAFB]">
         {{ $slot }}
     </main>
     <x-footer />

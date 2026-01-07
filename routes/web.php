@@ -22,7 +22,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/settings', [SettingsController::class, 'settings'])->name('profile.settings');
 
 Route::get('/googlemapsForm', [googlemapsController::class, 'googlemapsForm'])->name('googlemaps.postForm');
+Route::post('/googlemapsForm', [googlemapsController::class, 'spotStore'])->name('SpotStore');
 
-Route::post('googlemapsForm', [googlemapsController::class, 'spotStore'])->name('SpotStore');
+Route::get('/show', [googlemapsController::class, 'show'])->name('googlemaps.show');
 
 require __DIR__ . '/auth.php';
