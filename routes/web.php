@@ -12,7 +12,7 @@ Route::get('/', function () {
 Route::get('/dashboard', [googlemapsController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
-    
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -24,5 +24,6 @@ Route::get('/settings', [SettingsController::class, 'settings'])->name('profile.
 Route::get('/googlemapsForm', [googlemapsController::class, 'googlemapsForm'])->name('googlemaps.postForm');
 Route::post('/googlemapsForm', [googlemapsController::class, 'spotStore'])->name('SpotStore');
 
-Route::get('/show', [googlemapsController::class, 'show'])->name('googlemaps.show');
+Route::get('/show/{spotPost}', [googlemapsController::class, 'show'])->name('googlemaps.show');
+
 require __DIR__ . '/auth.php';

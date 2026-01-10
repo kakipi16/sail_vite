@@ -41,7 +41,7 @@ async function initMap() {
                 <div>
                     <strong>${spot.spotTitle}</strong><br>
                     <p>${spot.spotDesc}</p>
-                    <button id="submitBtn"><a href = "/show">more</a></button>
+                    <button id="submitBtn"><a href = "/show/${spot.id}">more</a></button>
                 </div>
             `);
             infoWindow.open({

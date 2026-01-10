@@ -20,6 +20,12 @@ class googlemapsController extends Controller
     /**
      * @throws \Illuminate\Validation\ValidationException
      */
+    public function index()
+    {
+        $spots = SpotPost::select('id', 'spotTitle', 'spotDesc', 'latitude', 'longitude')->get();
+        return view('dashboard', compact('spots'));
+    }
+
     public function spotStore(Request $request): RedirectResponse
     {
         $request->validate([
@@ -38,15 +44,10 @@ class googlemapsController extends Controller
         return redirect(route('dashboard', absolute: false));
     }
 
-    public function show(): View
+    public function show(SpotPost $spotPost): View
     {
-        $posts = SpotPost::all();
-        return view('googlemaps.show', compact('posts'));
+        return view('googlemaps.show', [
+            'spotPost' => $spotPost
+        ]);
     }
-    public function index()
-    {
-        $spots = SpotPost::select('id', 'spotTitle', 'spotDesc', 'latitude', 'longitude')->get();
-        return view('dashboard', compact('spots'));
-    }
-
 }
