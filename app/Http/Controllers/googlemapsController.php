@@ -43,5 +43,10 @@ class googlemapsController extends Controller
         $posts = SpotPost::all();
         return view('googlemaps.show', compact('posts'));
     }
-    
+    public function index()
+    {
+        $spots = SpotPost::select('id', 'spotTitle', 'spotDesc', 'latitude', 'longitude')->get();
+        return view('dashboard', compact('spots'));
+    }
+
 }

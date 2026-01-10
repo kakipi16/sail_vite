@@ -1,22 +1,56 @@
 const apiKey = import.meta.env.VITE_GOOGLE_MAP_API_KEY;
 const mapId = import.meta.env.VITE_GOOGLE_MAP_ID;
-const mapElement = document.getElementById("map");
 
 async function initMap() {
+    const mapElement = document.getElementById("map");
+    if(!mapElement){
+        console.error("map 要素が見つかりません");
+        return;
+    }
 
     //必要なライブラリの読み込み
     const {Map, InfoWindow } = await google.maps.importLibrary("maps");
-    const infoWindow = new InfoWindow();
     const { AdvancedMarkerElement } = ( await google.maps.importLibrary('marker'));
+
+    const infoWindow = new InfoWindow();
+
     const map = new Map( mapElement, {
         center: { lat: 34.716216939136, lng: 137.65626712680375 },
         zoom: 10,
         mapId: mapId
     });
 
-    const marker = new AdvancedMarkerElement({
-        position: {lat: 34.752331344555095, lng: 137.79565616978905}
+    const spots = window.spots || [];
+
+    spots.forEach((spot) => {
+        const lat = Number(spot.latitude);
+        const lng = Number(spot.longitude);
+
+        if (isNaN(lat) || isNaN(lng)) return;
+
+        const marker = new AdvancedMarkerElement({
+            map,
+            position: { lat, lng },
+            title: spot.spotTitle,
+            gmpClickable: true,
+        });
+
+        marker.addListener("click", () => {
+            infoWindow.close();
+            infoWindow.setContent(`
+                <div>
+                    <strong>${spot.spotTitle}</strong><br>
+                    <p>${spot.spotDesc}</p>
+                    <button id="submitBtn"><a href = "/show">more</a></button>
+                </div>
+            `);
+            infoWindow.open({
+                anchor: marker,
+                map,
+            });
+        });
     });
+
     let currentMarker = null;
     map.addListener("click", async (e) => {
 
@@ -55,24 +89,7 @@ async function createClickableMarker(latLng, map, infoWindow) {
 
     //Locationの引数をどこで定義するのかを確認。
     marker.addListener("click", () => {
-
-        // const Location = false;
         const AddSpot = '<div id="infoWindow_content">' + '<h2>スポットを追加しよう</h2>' + '<button id="submitBtn">' + '<a href = "/googlemapsForm">addSpot</a>' + '</button>' + '</div>';
-        // const LocationData = {
-        //     id: 1,
-        //     user_id: 1,
-        //     title: "あああ",
-        //     description: "あああ",
-        //     img_url: "http//example.com",
-        //     lat: 12334,
-        //     lng: 1234,
-        //     created_at: "yyyy/mm/dd",
-        //     updata_at: "yyyy/mm/dd",
-        // }
-        //todo あとで作る。
-        //Locationの値が入っているならLocationDataを出力、ないならAddSpotを設定する。
-        // const Post_location =`<h1>${LocationData.title}</h1>` + `<p>${LocationData.description}</p>`;
-        const content = Location ? AddSpot : Post_location;
         
         //新しいマーカーにはAddSpotを定義されているマーカーには,locationDataを表示
         infoWindow.close();

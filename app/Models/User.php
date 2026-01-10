@@ -12,6 +12,9 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    public function spotPosts() {
+        return $this->hasMany(SpotPost::class);
+    }
     /**
      * The attributes that are mass assignable.
      *

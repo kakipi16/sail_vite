@@ -27,10 +27,6 @@
                     <x-text-input id="spotDesc" class="block mt-1 w-full" type="text" name="spotDesc" :value="old('spotDesc')" required />
                     <x-input-error :messages="$errors->get('spotDesc')" class="mt-2" />
                 </div>
-                <!-- 34.63782273759663, 137.76821325948802 -->
-                <!-- Spot Location -->
-                <!-- <input type="" name="lat" value="{{ request('lat') }}">
-                <input type="" name="lng" value="{{ request('lng') }}"> -->
 
                 <!-- create button -->
                 <div class="flex">

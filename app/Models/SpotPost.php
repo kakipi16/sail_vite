@@ -15,4 +15,7 @@ class SpotPost extends Model
         'latitude',
         'longitude',
     ];
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
