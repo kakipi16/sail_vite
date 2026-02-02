@@ -1,13 +1,14 @@
-import { createPostInfoWindow } from "./uiService.js";
-
+import { createPostInfoWindow, createSpotInfoContent } from "./uiService.js"
+import { saveCoordinate } from "./coordinateStore.js";
+import { createSearchMarker, createClickMarker } from "./markerManager.js";
+import { renderSpots } from "./spotRenderer.js";
+import { geocodeAddress } from "./geocodeService.js";
 
 const apiKey = import.meta.env.VITE_GOOGLE_MAP_API_KEY;
 const mapId = import.meta.env.VITE_GOOGLE_MAP_ID;
 let map;
 let infoWindow;
 let marker;
-let searchMarker;
-let clickMarker;
 let geocoder;
 
 async function initMap() {
@@ -15,24 +16,16 @@ async function initMap() {
     const mapElement = document.getElementById("map");
     const inputText = document.getElementById("address");
     const submitButton = document.getElementById("searchSubmit");
-
-    //必要なライブラリの読み込み
-    const { Map } = await google.maps.importLibrary("maps");
-    const { InfoWindow } = await google.maps.importLibrary("maps");
-    const { AdvancedMarkerElement } = await google.maps.importLibrary('marker');
-
     //PHPとJSON経由でデータベースから取得
     const spots = window.spots || [];
 
-    //非同期のいらない呼び出し
-    geocoder = new google.maps.Geocoder();
-    infoWindow = new InfoWindow();
+    //必要なライブラリの読み込み
+    const { Map } = await google.maps.importLibrary("maps");
+    const { AdvancedMarkerElement } = await google.maps.importLibrary('marker');
 
-    //HTMLが読み込めないときに作動する
-    if(!mapElement){
-        console.error("map 要素が見つかりません");
-        return;
-    }
+    renderSpots(spots, map, infoWindow);
+
+    const searchMarker = createSearchMarker(map);
 
     //mapの生成と初期位置を設定
     map = new Map( mapElement, {
@@ -40,6 +33,21 @@ async function initMap() {
         zoom: 10,
         mapId: mapId
     });
+
+    map.addListener("click", async (e) => {
+        const marker = await createClickMarker(e.latLng, map);
+        saveCoordinate(e.latLng.lat(), e.latLng.lng());
+
+        infoWindow.setContent(createPostInfoWindow());
+        infoWindow.open({ map, anchor: marker });
+    });
+
+    //HTMLが読み込めないときに作動する
+    if(!mapElement){
+        console.error("map 要素が見つかりません");
+        return;
+    }
+
 
     //PHPからspotの引数で、データベースのデータを取得
     spots.forEach((spot) => {
@@ -55,15 +63,9 @@ async function initMap() {
         });
 
         //マーカーのクリック対応とwindowの表示
-        infoMarker.addListener("click", () => {
+        infoMarker.addListener("click", (e) => {
             infoWindow.close();
-            infoWindow.setContent(`
-                <div>
-                    <strong>${spot.spotTitle}</strong><br>
-                    <p>${spot.spotDesc}</p>
-                    <button id="submitBtn"><a href = "/show/${spot.id}">more</a></button>
-                </div>
-            `);
+            infoWindow.setContent(createSpotInfoContent(spot));
             infoWindow.open({
                 anchor: infoMarker,
                 map,
@@ -71,77 +73,9 @@ async function initMap() {
         });
     });
 
-    let currentMarker = null;
-    map.addListener("click", async (e) => {
-        if (currentMarker) {
-            currentMarker.map = null;
-        }
-
-        currentMarker =  await createClickableMarker(e.latLng, map, infoWindow);
-        //座標にIDを付与してをDBに格納したい。
-        const lat = e.latLng.lat();
-        const lng = e.latLng.lng();
-        const coordinate = { lat, lng };
-        localStorage.setItem("selectedCoordinate", JSON.stringify(coordinate));
-
-        console.log("localStorageに保存", coordinate);
-
-    });
-
-    //
-    searchMarker = new google.maps.Marker({
-        map,
-        gmpClickable: true,
-    });
-
     submitButton.addEventListener("click", () =>
-        geocode({ address: inputText.value }),
+        geocodeAddress(geocoder, map, infoWindow, searchMarker, inputText.value),
     );
-}
-
-function clear() {
-    searchMarker.setMap(null);
-}
-
-function geocode(request) {
-    clear();
-    geocoder.geocode(request).then((result) => {
-        const { results } = result;
-        const lat = results[0].geometry.location.lat();
-        const lng = results[0].geometry.location.lng();
-        const coordinate = { lat, lng };
-
-        map.setCenter(results[0].geometry.location);
-        searchMarker.setPosition(results[0].geometry.location);
-        searchMarker.setMap(map);
-        localStorage.setItem("selectedCoordinate", JSON.stringify(coordinate));
-
-        console.log("localStorageに保存", coordinate);
-
-        infoWindow.setContent(createPostInfoWindow());
-        infoWindow.open({ map, anchor: searchMarker });
-        return results;
-    })
-    .catch((e) => {
-        console.log("Geocode was not successful for the following reason: " + e);
-    });
-}
-
-async function createClickableMarker(latLng, map, infoWindow) {
-    const { AdvancedMarkerElement } = await google.maps.importLibrary('marker');
-
-    clickMarker = new AdvancedMarkerElement({
-        position: latLng,
-        map,
-        gmpClickable: true,
-    });
-
-    map.panTo(latLng);
-        infoWindow.close();
-        infoWindow.setContent(createPostInfoWindow());
-        infoWindow.open({ map, anchor: clickMarker });
-
-    return clickMarker;
 }
 
 window.initMap = initMap;
