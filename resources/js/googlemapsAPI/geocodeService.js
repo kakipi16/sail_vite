@@ -16,5 +16,6 @@ export function geocodeAddress(geocoder, map, infoWindow, searchMarker, address)
 
         infoWindow.setContent(createPostInfoWindow());
         infoWindow.open({ map, anchor: searchMarker });
+        o
     });
 }

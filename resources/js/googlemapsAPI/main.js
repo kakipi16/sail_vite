@@ -8,7 +8,6 @@ const apiKey = import.meta.env.VITE_GOOGLE_MAP_API_KEY;
 const mapId = import.meta.env.VITE_GOOGLE_MAP_ID;
 let map;
 let infoWindow;
-let marker;
 let geocoder;
 
 async function initMap() {
@@ -21,19 +20,18 @@ async function initMap() {
 
     //必要なライブラリの読み込み
     const { Map } = await google.maps.importLibrary("maps");
-    const { AdvancedMarkerElement } = await google.maps.importLibrary('marker');
-
-    renderSpots(spots, map, infoWindow);
-
+    const { InfoWindow } = await google.maps.importLibrary("maps");
+    infoWindow = new InfoWindow();
     const searchMarker = createSearchMarker(map);
-
+    
     //mapの生成と初期位置を設定
     map = new Map( mapElement, {
         center: { lat: 34.716216939136, lng: 137.65626712680375 },
         zoom: 10,
         mapId: mapId
     });
-
+    renderSpots(spots, map, infoWindow);
+    
     map.addListener("click", async (e) => {
         const marker = await createClickMarker(e.latLng, map);
         saveCoordinate(e.latLng.lat(), e.latLng.lng());
@@ -41,37 +39,14 @@ async function initMap() {
         infoWindow.setContent(createPostInfoWindow());
         infoWindow.open({ map, anchor: marker });
     });
+    //非同期のいらない呼び出し
+    geocoder = new google.maps.Geocoder();
 
     //HTMLが読み込めないときに作動する
     if(!mapElement){
         console.error("map 要素が見つかりません");
         return;
     }
-
-
-    //PHPからspotの引数で、データベースのデータを取得
-    spots.forEach((spot) => {
-        const lat = Number(spot.latitude);
-        const lng = Number(spot.longitude);
-        if (isNaN(lat) || isNaN(lng)) return;
-
-        const infoMarker = new AdvancedMarkerElement({
-            map,
-            position: { lat, lng },
-            title: spot.spotTitle,
-            gmpClickable: true,
-        });
-
-        //マーカーのクリック対応とwindowの表示
-        infoMarker.addListener("click", (e) => {
-            infoWindow.close();
-            infoWindow.setContent(createSpotInfoContent(spot));
-            infoWindow.open({
-                anchor: infoMarker,
-                map,
-            });
-        });
-    });
 
     submitButton.addEventListener("click", () =>
         geocodeAddress(geocoder, map, infoWindow, searchMarker, inputText.value),
