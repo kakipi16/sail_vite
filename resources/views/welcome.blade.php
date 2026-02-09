@@ -38,6 +38,7 @@
                                     ホーム
                                 </a>
                             </div>
+                            <x-home-button>ホーム</x-home-button>
                             @else
                             <div class="w-[200px] h-[64px] bg-[#4F46E5] rounded-xl flex items-center justify-center hover:border hover:border-[#4F46E5] hover:bg-[#FFFFFF]">
                                 <a

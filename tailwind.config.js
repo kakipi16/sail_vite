@@ -11,10 +11,19 @@ export default {
     ],
 
     theme: {
-        extend: {
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+        colors: {
+            main: {
+                DEFAULT: '#F2F2F2',
             },
+            icon: {
+                DEFAULT: '#049DD9',
+            },
+            btn: {
+                DEFAULT: '#0487D9',
+            },
+        },
+        extend: {
+
         },
     },
 

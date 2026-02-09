@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('spot_posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->vector('title');
-            $table->vector('description')->nullable();
-            $table->vector('imag_url');
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->string('imag_url');
             $table->decimal('latitude');
             $table->decimal('longitude');
             $table->timestamps();
