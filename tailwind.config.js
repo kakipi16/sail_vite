@@ -23,6 +23,9 @@ export default {
                     DEFAULT: '#04B2D9',
                     hover: '#0487D9',
                 },
+                btnArrow: {
+                    DEFAULT: '#50BFBF',
+                }
             },
         },
     },

@@ -1,7 +1,9 @@
-<a
-    href="{{ route('dashboard') }}"
-    {{ $attributes->merge([
-        'class' => 'inline-flex items-center px-6 py-3 text-gray-500 bg-gray-100 rounded-md hover:bg-gray-200 hover:text-gray-700'
-    ]) }}>
-    {{ $slot }}
+<a href="{{ route('dashboard') }}" class="relative inline-flex items-center px-8 py-2.5 overflow-hidden text-xl font-medium text-btn border-2 border-btn rounded-full hover:border-btn-hover hover:text-main group hover:bg-gray-50">
+    <span class="absolute left-0 block w-full h-0 transition-all bg-btn-hover  opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
+    <span class="absolute -right-2 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+        </svg>
+    </span>
+    <span class="relative">{{ $slot }}</span>
 </a>

@@ -25,7 +25,7 @@ Route::get('/settings', [SettingsController::class, 'settings'])->name('profile.
 Route::get('/googlemapsForm', [googlemapsController::class, 'googlemapsForm'])->name('googlemaps.postForm');
 Route::post('/googlemapsForm', [googlemapsController::class, 'spotStore'])->name('SpotStore');
 
-Route::get('/show/{spotPost}', [googlemapsController::class, 'show'])->name('components.showCards');
+Route::get('/show/{spotPost}', [googlemapsController::class, 'show'])->name('googlemaps.show');
 Route::get('/postList', [postListController::class, 'postList'])->name('googlemaps.postList');
 
 require __DIR__ . '/auth.php';

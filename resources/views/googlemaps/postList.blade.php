@@ -4,7 +4,7 @@
             <div class="relative mb-8">
                 <div class="relative flex justify-start">
                     <span class="pr-3 text-lg font-medium text-gray-600">
-                        All Issues
+                        投稿一覧
                     </span>
                 </div>
             </div>
@@ -17,7 +17,7 @@
                     <div>
                         <span class="text-sm text-gray-500">投稿者：{{ $postList->user->name}}</span>
                         <p class="mt-3 text-lg font-medium leading-6">
-                            <a href="./blog-post.html" class="text-xl text-gray-800 group-hover:text-gray-500 lg:text-2xl">12 Graphic
+                            <a href="{{ route('googlemaps.show',$postList->id) }}" class="text-xl text-gray-800 group-hover:text-gray-500 lg:text-2xl">
                                 {{$postList->spotTitle}}
                             </a>
                         </p>
