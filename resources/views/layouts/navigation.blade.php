@@ -8,26 +8,29 @@
                     TravelSpots
                 </a>
             </div>
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex sm:items-center">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('ホーム') }}
+            <!-- Navigation Links -->
+            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex sm:items-center">
+                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('ホーム') }}
+                </x-nav-link>
+                <x-nav-link :href="route('googlemaps.postList')" :active="request()->routeIs('googlemaps.postList')">
+                    {{ __('投稿一覧') }}
+                </x-nav-link>
+                <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
+                    {{ __('プロフィール') }}
+                </x-nav-link>
+                <x-nav-link :href="route('profile.settings')" :active="request()->routeIs('profile.settings')">
+                    {{ __('設定') }}
+                </x-nav-link>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <x-nav-link :href="route('logout')" onclick="event.preventDefault();this.closest('form').submit();">
+                        {{ __('ログアウト') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
-                        {{ __('プロフィール') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('profile.settings')" :active="request()->routeIs('profile.settings')">
-                        {{ __('設定') }}
-                    </x-nav-link>
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <x-nav-link :href="route('logout')" onclick="event.preventDefault();this.closest('form').submit();">
-                            {{ __('ログアウト') }}
-                        </x-nav-link>
-                    </form>
-                </div>
+                </form>
+            </div>
 
-                <!-- Hamburger -->
+            <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">

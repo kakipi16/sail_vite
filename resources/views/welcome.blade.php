@@ -30,33 +30,11 @@
                     @if (Route::has('login'))
                         <nav class="flex items-center justify-end gap-4">
                             @auth
-                            <div class="w-[200px] h-[64px] bg-[#4F46E5] rounded-xl flex items-center justify-center hover:border hover:border-[#4F46E5] hover:bg-[#FFFFFF]">
-                                <a
-                                    href="{{ route('login') }}"
-                                    class="inline-block px-[60px] py-[18px] dark:text-[#EDEDEC] text-[#FFFFFF] rounded-sm text-xl leading-normal hover:text-[#4F46E5]"
-                                >
-                                    ホーム
-                                </a>
-                            </div>
-                            <x-home-button>ホーム</x-home-button>
+                            <x-login-button>ホーム</x-login-button>
                             @else
-                            <div class="w-[200px] h-[64px] bg-[#4F46E5] rounded-xl flex items-center justify-center hover:border hover:border-[#4F46E5] hover:bg-[#FFFFFF]">
-                                <a
-                                    href="{{ route('login') }}"
-                                    class="inline-block px-[60px] py-[18px] dark:text-[#EDEDEC] text-[#FFFFFF] rounded-sm text-xl leading-normal hover:text-[#4F46E5]"
-                                >
-                                    ログイン
-                                </a>
-                            </div>
-        
+                            <x-login-button>ログイン</x-login-button>
                                 @if (Route::has('register'))
-                                <div class="w-[200px] h-[64px] bg-[#FFFFFF] rounded-xl border border-[#4F46E5] flex items-center justify-center hover:border hover:border-none hover:bg-[#4F46E5]">
-                                    <a
-                                        href="{{ route('register') }}"
-                                        class="inline-block px-[59px] py-[18px] dark:text-[#EDEDEC] text-[#4F46E5] rounded-sm text-xl leading-normal hover:text-[#FFFFFF]">
-                                        新規登録
-                                    </a>
-                                </div>
+                                <x-register-button>新規登録</x-register-button>
                                 @endif
                             @endauth
                         </nav>

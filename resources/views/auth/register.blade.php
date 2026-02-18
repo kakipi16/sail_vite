@@ -24,9 +24,9 @@
             <x-input-label for="password" :value="__('パスワード')" />
 
             <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+                type="password"
+                name="password"
+                required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -36,15 +36,18 @@
             <x-input-label for="password_confirmation" :value="__('パスワード確認')" />
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+                type="password"
+                name="password_confirmation" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-center mt-6 mb-4">
-            <x-primary-button class="ms-4">
+            <!-- <x-primary-button class="ms-4">
                 {{ __('アカウントを作成') }}
+            </x-primary-button> -->
+            <x-primary-button class="ms-4">
+                {{ __('アカウント作成') }}
             </x-primary-button>
         </div>
     </form>

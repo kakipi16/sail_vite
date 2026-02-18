@@ -11,19 +11,19 @@ export default {
     ],
 
     theme: {
-        colors: {
-            main: {
-                DEFAULT: '#F2F2F2',
-            },
-            icon: {
-                DEFAULT: '#049DD9',
-            },
-            btn: {
-                DEFAULT: '#0487D9',
-            },
-        },
         extend: {
-
+            colors: {
+                main: {
+                    DEFAULT: '#F2F2F2',
+                },
+                icon: {
+                    DEFAULT: '#049DD9',
+                },
+                btn: {
+                    DEFAULT: '#04B2D9',
+                    hover: '#0487D9',
+                },
+            },
         },
     },
 

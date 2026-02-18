@@ -16,16 +16,14 @@ class googlemapsController extends Controller
     {
         return view('googlemaps.postForm');
     }
-
-    /**
-     * @throws \Illuminate\Validation\ValidationException
-     */
     public function index()
     {
         $spots = SpotPost::select('id', 'spotTitle', 'spotDesc', 'latitude', 'longitude')->get();
         return view('dashboard', compact('spots'));
     }
-
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function spotStore(Request $request): RedirectResponse
     {
         $request->validate([

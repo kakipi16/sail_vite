@@ -3,6 +3,7 @@ export function saveCoordinate(lat, lng) {
         "selectedCoordinate",
         JSON.stringify({ lat, lng })
     );
-        console.log("localStorageに保存", lat, lng);
+    console.log(JSON.stringify({ lat, lng }))
+    console.log("localStorageに保存", lat, lng);
 
 }
