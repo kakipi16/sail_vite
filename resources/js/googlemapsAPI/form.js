@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const SpotForm = document.querySelector("#SpotForm");
   if (!SpotForm) return;
 
+  const latInput = document.getElementById("lat");
+  const lngInput = document.getElementById("lng");
+
   const saved = localStorage.getItem("selectedCoordinate")
 
   if (!saved) {
@@ -11,18 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const coordinate = JSON.parse(saved);
 
-  const InputLat = document.createElement("input");
-  InputLat.type = "hidden";
-  InputLat.name = "lat";
-  InputLat.value = coordinate.lat;
+  latInput.value = coordinate.lat;
+  lngInput.value = coordinate.lng;
 
-  const InputLng = document.createElement("input");
-  InputLng.type = "hidden";
-  InputLng.name = "lng";
-  InputLng.value = coordinate.lng;
-
-  SpotForm.appendChild(InputLat);
-  SpotForm.appendChild(InputLng);
+  console.log("lat:", latInput.value);
+  console.log("lng:", lngInput.value);
 
   console.log("フォームにセットした", coordinate);
 

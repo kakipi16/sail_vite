@@ -1,6 +1,41 @@
-<header class="bg-[#FFFFFF] h-[80px]  w-full not-has-[nav]:hidden  items-center flex justify-between">
-    <h1 class="text-2xl ms-20">TravelSpots</h1>
-    <nav class="me-20">
-        <a href="{{ url('/') }}">Home</a>
-    </nav>
-</header>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+        <!-- Logo -->
+        <div class="shrink-0 flex items-center">
+            <svg class="icon icon-Logo-Icon w-[40px]">
+                <use xlink:href="#icon-Logo-Icon"></use>
+            </svg>
+            <a href="{{ route('dashboard') }}" class="text-2xl font-black">
+                TravelSpots
+            </a>
+        </div>
+        <!-- Navigation Links -->
+        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex sm:items-center">
+            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                {{ __('ホーム') }}
+            </x-nav-link>
+            <x-nav-link :href="route('googlemaps.postList')" :active="request()->routeIs('googlemaps.postList')" class="hidden">
+                {{ __('投稿一覧') }}
+            </x-nav-link>
+            <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
+                {{ __('プロフィール') }}
+            </x-nav-link>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <x-nav-link :href="route('logout')" onclick="event.preventDefault();this.closest('form').submit();" class="hidden">
+                    {{ __('ログアウト') }}
+                </x-nav-link>
+            </form>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="-me-2 flex items-center sm:hidden">
+            <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>

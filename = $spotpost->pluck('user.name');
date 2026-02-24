@@ -1,0 +1,27 @@
+[90m= [39m[34;4mIlluminate\Database\Eloquent\Collection[39;24m {#1362
+    [34mall[39m: [
+      [34;4mApp\Models\SpotPost[39;24m {#6095
+        [34mid[39m: [35m1[39m,
+        [34muser_id[39m: [35m1[39m,
+        [34mspotTitle[39m: "[32mテスト投稿[39m",
+        [34mspotDesc[39m: "[32mできたかな？[39m",
+        [34mimag_url[39m: [36mnull[39m,
+        [34mlatitude[39m: "[32m35.6958945000000000[39m",
+        [34mlongitude[39m: "[32m139.7681571000000000[39m",
+        [34mcreated_at[39m: "[32m2026-02-08 11:29:36[39m",
+        [34mupdated_at[39m: "[32m2026-02-08 11:29:36[39m",
+      },
+      [34;4mApp\Models\SpotPost[39;24m {#6096
+        [34mid[39m: [35m2[39m,
+        [34muser_id[39m: [35m1[39m,
+        [34mspotTitle[39m: "[32mしゃぼてん公園[39m",
+        [34mspotDesc[39m: "[32mサボテンやカビバラの入浴が見れる動物園　オススメ[39m",
+        [34mimag_url[39m: [36mnull[39m,
+        [34mlatitude[39m: "[32m34.9071258000000000[39m",
+        [34mlongitude[39m: "[32m139.1008839000000000[39m",
+        [34mcreated_at[39m: "[32m2026-02-14 20:25:39[39m",
+        [34mupdated_at[39m: "[32m2026-02-14 20:25:39[39m",
+      },
+    ],
+  }
+

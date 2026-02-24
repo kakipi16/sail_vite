@@ -2,7 +2,8 @@
     <main class=" w-full min-h-[calc(100vh-80px-80px)] flex items-center justify-center">
         <div class="min-h-scree flex items-center justify-center p-4">
             <div class="w-full max-w-md sm:max-w-xl md:max-w-2xl bg-white rounded-2xl shadow-lg">
-                <img class="aspect-video  rounded-t-2xl object-cover object-center" src="https://dummyimage.com/800x400/000/ffffff" />
+                <img class="aspect-video  rounded-t-2xl object-cover object-center" src="{{ asset('storage/' . $spotPost->imag_url) }}" />
+
                 <div class="p-6">
                     <small class="text-gray-900 text-xs">投稿者 : {{ $spotPost->user->name}}</small>
                     <h1 class="text-2xl font-bold text-gray-700 pb-2 ">{{ $spotPost->spotTitle }}</h1>
@@ -19,7 +20,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </main>
 </x-app-layout>

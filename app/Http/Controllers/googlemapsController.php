@@ -18,7 +18,7 @@ class googlemapsController extends Controller
     }
     public function index()
     {
-        $spots = SpotPost::select('id', 'spotTitle', 'spotDesc', 'latitude', 'longitude')->get();
+        $spots = SpotPost::with('user')->get();
         return view('dashboard', compact('spots'));
     }
     /**
@@ -26,16 +26,22 @@ class googlemapsController extends Controller
      */
     public function spotStore(Request $request): RedirectResponse
     {
+        //バリレーション
         $request->validate([
             'spotTitle' => ['required', 'string', 'max:20'],
             'spotDesc' => ['nullable', 'string', 'max:255'],
+            'image' => ['required', 'image'],
         ]);
+        // ディレクトリ名
+        $dir = 'img';
+        // storage/app/public/img に保存され、URLアクセス可能になる
+        $path = $request->file('image')->store($dir, 'public');
 
         $post = SpotPost::create([
             'user_id' => Auth::id(),
             'spotTitle' => $request->spotTitle,
             'spotDesc' => $request->spotDesc,
-            'imag_url' => $request->imag_url,
+            'imag_url' => $path,
             'latitude' => $request->lat,
             'longitude' => $request->lng,
         ]);

@@ -1,12 +1,22 @@
 <x-app-layout>
-    <main class=" w-full min-h-[calc(100vh-80px-80px)] flex items-center justify-center">
+    <div class=" w-full min-h-[calc(100vh-80px-80px)] flex items-center justify-center">
         <div class="w-full sm:max-w-md px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-            <form id="SpotForm" method="POST" action="{{ route('SpotStore') }}">
+            <form id="SpotForm" method="POST" action="{{ route('SpotStore') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="flex flex-col mt-4">
                     <x-title>スポットを投稿する</x-title>
                     <x-title_description>あなたのおすすめスポットを他の旅行者と共有しましょう</x-title_description>
                 </div>
+
+                <!-- hidden（座標用） -->
+                <input type="hidden" name="lat" id="lat">
+                <input type="hidden" name="lng" id="lng">
+                <!-- image_url -->
+                <div class="mt-4">
+                    <label for="image">画像アップロード</label>
+                    <input type="file" name="image" id="image">
+                </div>
+
                 <!-- spotTitle -->
                 <div class="mt-6">
                     <div class="flex justify-between">
@@ -41,5 +51,5 @@
                 </div>
             </form>
         </div>
-    </main>
+    </div>
 </x-app-layout>

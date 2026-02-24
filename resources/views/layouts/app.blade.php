@@ -15,6 +15,7 @@
 </head>
 
 <body class="font-roboto antialiased">
+    <?php include_once 'images/symbol-defs.svg'; ?>
     @include('layouts.navigation')
     <!-- Page Content -->
     <main class="w-full min-h-[calc(100vh-80px-80px)] bg-[#F9FAFB]">

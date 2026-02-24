@@ -4,6 +4,9 @@
         <div class="flex justify-between h-16">
             <!-- Logo -->
             <div class="shrink-0 flex items-center">
+                <svg class="icon icon-Logo-Icon w-[40px]">
+                    <use xlink:href="#icon-Logo-Icon"></use>
+                </svg>
                 <a href="{{ route('dashboard') }}" class="text-2xl font-black">
                     TravelSpots
                 </a>

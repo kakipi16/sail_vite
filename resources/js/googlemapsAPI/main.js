@@ -13,8 +13,8 @@ let geocoder;
 async function initMap() {
     //DOM操作
     const mapElement = document.getElementById("map");
+    const searchForm = document.getElementById("searchForm");
     const inputText = document.getElementById("address");
-    const submitButton = document.getElementById("searchSubmit");
     //PHPとJSON経由でデータベースから取得
     const spots = window.spots || [];
 
@@ -23,7 +23,7 @@ async function initMap() {
     const { InfoWindow } = await google.maps.importLibrary("maps");
     infoWindow = new InfoWindow();
     const searchMarker = createSearchMarker(map);
-    
+
     //mapの生成と初期位置を設定
     map = new Map( mapElement, {
         center: { lat: 34.716216939136, lng: 137.65626712680375 },
@@ -31,7 +31,7 @@ async function initMap() {
         mapId: mapId
     });
     renderSpots(spots, map, infoWindow);
-    
+
     map.addListener("click", async (e) => {
         const marker = await createClickMarker(e.latLng, map);
         saveCoordinate(e.latLng.lat(), e.latLng.lng());
@@ -48,9 +48,10 @@ async function initMap() {
         return;
     }
 
-    submitButton.addEventListener("click", () =>
-        geocodeAddress(geocoder, map, infoWindow, searchMarker, inputText.value),
-    );
+    searchForm.addEventListener("submit", (e) =>{
+        e.preventDefault();
+        geocodeAddress(geocoder, map, infoWindow, searchMarker, inputText.value);
+    });
 }
 
 window.initMap = initMap;

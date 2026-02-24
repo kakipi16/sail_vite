@@ -20,8 +20,9 @@
         @endif
     </head>
     <body class="bg-[#F9FAFB] dark:bg-[#0a0a0a] text-[#1E293B] min-h-screen">
+    <?php include_once 'images/symbol-defs.svg'; ?>
         <x-header />
-            <main class="w-full min-h-[calc(100vh-80px-80px)] flex items-center justify-center">
+            <main class="w-full min-h-[calc(100vh-64px-80px)] flex items-center justify-center">
                 <div class="flex items-center flex-col">
                     <div class="flex justify-center flex-col mb-[48px]">
                         <h1 class="m-auto font-bold text-[48px] mb-[24px] text-[#111827]">TravelSpotsへようこそ</h1>
