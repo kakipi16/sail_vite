@@ -54,4 +54,36 @@ class googlemapsController extends Controller
             'spotPost' => $spotPost
         ]);
     }
+
+    public function edit(SpotPost $spotPost)
+    {
+        return view('googlemaps.edit', compact('spotPost'));
+    }
+    public function update(Request $request, SpotPost $spotPost): RedirectResponse
+    {
+        $validated = $request->validate([
+            'spotTitle' => ['nullable', 'string', 'max:20'],
+            'spotDesc' => ['nullable', 'string', 'max:255'],
+            'image' => ['nullable', 'image'],
+        ]);
+
+        // 入力があった項目だけを取り出す（nullを除外）
+        $updateData = array_filter($validated);
+
+        // 画像がある場合のみ処理
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('img', 'public');
+            $updateData['imag_url'] = $path;
+        }
+
+        $spotPost->update($updateData);
+
+        return redirect('postList');
+    }
+    public function destroy(Request $request, SpotPost $spotPost)
+    {
+        $spotPost->delete();
+        $request->session()->flash('message', '投稿を削除しました');
+        return back();
+    }
 }

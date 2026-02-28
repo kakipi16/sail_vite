@@ -26,6 +26,10 @@ Route::get('/googlemapsForm', [googlemapsController::class, 'googlemapsForm'])->
 Route::post('/googlemapsForm', [googlemapsController::class, 'spotStore'])->name('SpotStore');
 
 Route::get('/show/{spotPost}', [googlemapsController::class, 'show'])->name('googlemaps.show');
+// 編集画面・更新処理（追加）
+Route::get('/show/{spotPost}/edit', [googlemapsController::class, 'edit'])->name('spotPost.edit');
+Route::patch('/show/{spotPost}', [googlemapsController::class, 'update'])->name('spotPost.update');
+Route::delete('/show/{spotPost}', [googlemapsController::class, 'destroy'])->name('spotPost.destroy');
 Route::get('/postList', [postListController::class, 'postList'])->name('googlemaps.postList');
 
 require __DIR__ . '/auth.php';

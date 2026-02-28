@@ -3,6 +3,9 @@
     <script type="text/javascript">
         window.spots = @json($spots);
         console.log(window.spots);
+        window.Laravel = {
+            storageBase: "{{ asset('storage/') }}/"
+        };
     </script>
     @vite('resources/js/googlemapsAPI/main.js')
     @endpush
