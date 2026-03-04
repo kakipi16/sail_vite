@@ -41,7 +41,7 @@ export function createPostSidebar(spot) {
                 </div>
                 <div class="p-6">
                     <span class="text-sm font-medium text-gray-400">投稿者：${userName}</span>
-                    <h3 class="mt-2 text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">
+                    <h3 class="mt-2 text-2xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">
                         <a href="/show/${spot.id}" class="after:absolute after:inset-0 after:z-10">
                             ${spot.spotTitle}
                         </a>

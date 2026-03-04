@@ -2,7 +2,7 @@
     <div class="py-8 flex flex-col justify-center items-center">
         <div class="relative mb-8">
             <div class="relative flex justify-start">
-                <span class="pr-3 text-lg font-medium text-gray-600">
+                <span class="pr-3 text-3xl font-medium text-gray-600">
                     投稿一覧
                 </span>
             </div>
@@ -22,11 +22,11 @@
                     <span class="text-sm text-gray-500">投稿者：{{ $postList->user->name}}</span>
                     <p class="mt-3 text-lg font-medium leading-6">
                         <!-- ここを修正する　z-indexをボタンに付与できるようにする。 -->
-                        <a href="{{ route('googlemaps.show',$postList->id) }}" class="text-xl text-gray-800  lg:text-2xl after:absolute after:inset-0 after:z-10">
+                        <a href="{{ route('googlemaps.show',$postList->id) }}" class="text-2xl text-gray-800  lg:text-2xl after:absolute after:inset-0 after:z-10">
                             {{$postList->spotTitle}}
                         </a>
                     </p>
-                    <p class="mt-2 text-lg text-gray-500 break-words truncate">
+                    <p class="mt-2 text-base text-gray-500 break-words truncate">
                         {{$postList->spotDesc}}
                     </p>
                     @if ($user_id == $postList->user_id)

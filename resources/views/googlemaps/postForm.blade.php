@@ -11,10 +11,14 @@
                 <!-- hidden（座標用） -->
                 <input type="hidden" name="lat" id="lat">
                 <input type="hidden" name="lng" id="lng">
+
                 <!-- image_url -->
-                <div class="mt-4">
-                    <label for="image">画像アップロード</label>
-                    <input type="file" name="image" id="image">
+                <div class="mt-4 ">
+                    <div class="flex justify-between">
+                        <x-input-label for="image" :value="__('画像アップロード')" />
+                        <x-input-label for="spotTitle" class="text-red-600" :value="__('必須')" />
+                    </div>
+                    <input type="file" name="image" id="image" class="mt-1">
                 </div>
 
                 <!-- spotTitle -->

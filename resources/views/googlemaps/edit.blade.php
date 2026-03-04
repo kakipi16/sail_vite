@@ -9,7 +9,7 @@
                 </div>
                 <!-- image_url -->
                 <div class="mt-4">
-                    <label for="image">画像アップロード</label>
+                    <x-input-label for="image" :value="__('画像アップロード')" />
                     <input type="file" name="image" id="image">
                 </div>
 
@@ -19,7 +19,7 @@
                         <x-input-label for="spotTitle" :value="__('スポット名')" />
                         <x-input-label for="spotDesc" class="text-gray-400" :value="__('任意')" />
                     </div>
-                    <x-text-input id="spotTitle" class="block mt-1 w-full" type="text" name="spotTitle" :value="old('spotTitle')"  autofocus />
+                    <x-text-input id="spotTitle" class="block mt-1 w-full" type="text" name="spotTitle" :value="old('spotTitle')" autofocus />
                     <x-input-error :messages="$errors->get('spotTitle')" class="mt-2" />
                 </div>
 
@@ -30,17 +30,17 @@
                         <x-input-label for="spotDesc" :value="__('スポット説明')" />
                         <x-input-label for="spotDesc" class="text-gray-400" :value="__('任意')" />
                     </div>
-                    <x-textarea id="spotDesc" class="block mt-1 w-full" type="textarea" name="spotDesc" :value="old('spotDesc')"  />
+                    <x-textarea id="spotDesc" class="block mt-1 w-full" type="textarea" name="spotDesc" :value="old('spotDesc')" />
                     <x-input-error :messages="$errors->get('spotDesc')" class="mt-2" />
                 </div>
 
                 <!-- create button -->
                 <div>
                     <div class="flex items-center justify-center mt-6 mb-4">
-                        <x-back-home-button class="ms-4">
-                            {{ __('キャンセル') }}
-                        </x-back-home-button>
-                        <x-submit-button class="ms-4 px-10">
+                        <x-postList-button>
+                            {{ __('投稿一覧') }}
+                        </x-postList-button>
+                        <x-submit-button class="ms-4 py-3.5 px-[44px]">
                             {{ __('更新') }}
                         </x-submit-button>
                     </div>

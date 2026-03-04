@@ -45,6 +45,7 @@ class googlemapsController extends Controller
             'latitude' => $request->lat,
             'longitude' => $request->lng,
         ]);
+
         return redirect(route('dashboard', absolute: false));
     }
 

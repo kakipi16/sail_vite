@@ -4,13 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const latInput = document.getElementById("lat");
   const lngInput = document.getElementById("lng");
-
   const saved = localStorage.getItem("selectedCoordinate")
-
-  if (!saved) {
-    alert("まだ地図をクリックしていません");
-    return;
-  }
 
   const coordinate = JSON.parse(saved);
 
@@ -23,6 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("フォームにセットした", coordinate);
 
   SpotForm.addEventListener("submit", () => {
+    if (!saved) {
+      alert("まだ地図をクリックしていません");
+      return;
+    }
     localStorage.removeItem("selectedCoordinate");
   });
 });
