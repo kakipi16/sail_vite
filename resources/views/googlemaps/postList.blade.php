@@ -31,8 +31,10 @@
                     </p>
                     @if ($user_id == $postList->user_id)
                     <div class="mb-4 text-center" style="margin-top:10px">
-                        <a href="{{ route('spotPost.edit', $postList) }}" class="relative z-20 inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-blue-600 border border-blue-700 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mr-2" data-rounded="rounded-md" data-primary="blue-600" data-primary-reset="{}">
-                            編集する
+
+                        <a href="{{ route('spotPost.edit', $postList) }}" class="inline-flex items-center z-20 rounded-md px-4 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-blue-600 ">
+                            <span class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-blue-600 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+                            <span class="relative text-blue-600 transition duration-300 group-hover:text-white ease">編集する</span>
                         </a>
                         <form
                             style="display: inline-block;"
