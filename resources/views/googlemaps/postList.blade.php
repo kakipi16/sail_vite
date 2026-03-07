@@ -18,7 +18,7 @@
                 <div class=" h-[300px] lg:w-[200px] lg:h-[200px] mb-4 shrink-0 md:mb-0 lg:mr-3">
                     <img class="h-full w-full rounded-md object-center lg:object-cover" src="{{ asset('storage/' . $postList->imag_url) }}" alt="{{$postList->spotTitle}}" />
                 </div>
-                <div class="h-full w-full flex flex-col justify-center items-start">
+                <div class="w-full flex flex-col justify-center items-start">
                     <span class="text-sm text-gray-500">投稿者：{{ $postList->user->name}}</span>
                     <p class="mt-3 text-lg font-medium leading-6">
                         <!-- ここを修正する　z-indexをボタンに付与できるようにする。 -->
@@ -26,9 +26,11 @@
                             {{$postList->spotTitle}}
                         </a>
                     </p>
-                    <p class="mt-2 text-base text-gray-500 break-words truncate">
-                        {{$postList->spotDesc}}
-                    </p>
+                    <div class="w-5/6">
+                        <p class="mt-2 text-base text-gray-500 break-words line-clamp-1 overflow-hidden">
+                            {{$postList->spotDesc}}
+                        </p>
+                    </div>
                     @if ($user_id == $postList->user_id)
                     <div class="mb-4 text-center" style="margin-top:10px">
 
