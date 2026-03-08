@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/googlemapsAPI/form.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/googlemapsAPI/form.js', 'resources/js/postfile/imgShow.js'])
 </head>
 
 <body class="font-roboto antialiased">

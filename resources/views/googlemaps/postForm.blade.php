@@ -1,7 +1,7 @@
 <x-app-layout>
-    <div class=" w-full min-h-[calc(100vh-80px-80px)] flex items-center justify-center">
-        <div class="w-full sm:max-w-md px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-            <form id="SpotForm" method="POST" action="{{ route('SpotStore') }}" enctype="multipart/form-data">
+    <main class=" w-full min-h-[calc(100vh-80px-80px)] flex items-center justify-center">
+        <div class="min-h-scree flex items-center justify-center">
+            <form id="SpotForm" method="POST" action="{{ route('SpotStore') }}" enctype="multipart/form-data" class="w-[640px] max-w-md sm:max-w-xl md:max-w-2xl bg-white rounded-2xl shadow-lg p-6">
                 @csrf
                 <div class="flex flex-col mt-4">
                     <x-title>スポットを投稿する</x-title>
@@ -18,7 +18,12 @@
                         <x-input-label for="image" :value="__('画像アップロード')" />
                         <x-input-label for="spotTitle" class="text-red-600" :value="__('必須')" />
                     </div>
-                    <input type="file" name="image" id="image" class="mt-1">
+                    <input type="file" name="image" id="imageUpload" class="mt-1 file:inline-flex file:items-center file:justify-center file:w-full file:px-3 file:py-2 file:text-base file:font-bold file:leading-6 file:text-white file:bg-btn file:border file:border-transparent file:rounded-full file:md:w-auto file:hover:bg-btn-hover file:focus:outline-none file:focus:ring-2 file:focus:ring-offset-2 file:focus:ring-indigo-600">
+                    <div>
+                        <img id="img" class="h-[240px] w-[240px] object-scale-down bg-gray-200"
+                        >
+                    </div>
+
                 </div>
 
                 <!-- spotTitle -->
@@ -31,14 +36,13 @@
                     <x-input-error :messages="$errors->get('spotTitle')" class="mt-2" />
                 </div>
 
-
                 <!-- Spot Description -->
                 <div class="mt-4">
                     <div class="flex justify-between">
                         <x-input-label for="spotDesc" :value="__('スポット説明')" />
                         <x-input-label for="spotDesc" class="text-gray-400" :value="__('任意')" />
                     </div>
-                    <x-textarea id="spotDesc" class="block mt-1 w-full" type="textarea" name="spotDesc" :value="old('spotDesc')" required />
+                    <x-textarea id="spotDesc" class="block mt-1 w-full h-40" type="textarea" name="spotDesc" :value="old('spotDesc')" required />
                     <x-input-error :messages="$errors->get('spotDesc')" class="mt-2" />
                 </div>
 
@@ -55,5 +59,5 @@
                 </div>
             </form>
         </div>
-    </div>
+    </main>
 </x-app-layout>
