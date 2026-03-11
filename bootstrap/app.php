@@ -12,6 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         //
+        $middleware->redirectTo(
+            guests: function() {
+                abort(401);
+            }
+        );
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
