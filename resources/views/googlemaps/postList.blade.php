@@ -12,22 +12,22 @@
             {{ session('message')}}
         </div>
         @endif
-        <div class="space-y-8 lg:divide-y lg:divide-gray-100 w-full md:max-w-md lg:max-w-2xl xl:max-w-5xl">
+        <div class="space-y-8 lg:divide-y lg:divide-gray-100 max-w-md lg:max-w-2xl xl:max-w-5xl">
             @foreach ($postLists as $postList)
-            <div class="group/card flex relative h-[600px] lg:h-[200px] overflow-hidden flex-col lg:flex-row items-center  rounded-lg shadow-lg hover:bg-gray-100">
-                <div class=" h-[300px] lg:w-[200px] lg:h-[200px] mb-4 shrink-0 md:mb-0 lg:mr-3">
+            <div class="group/card flex relative h-auto sm:min-h-[400px] lg:min-h-[200px] overflow-hidden flex-col lg:flex-row items-center rounded-lg shadow-lg hover:bg-gray-100">
+                <div class=" h-[300px] lg:w-[200px] lg:h-[200px] mb-4 shrink-0 lg:mb-0 lg:mr-3">
                     <img class="h-full w-full rounded-md object-center lg:object-cover" src="{{ asset('storage/' . $postList->imag_url) }}" alt="{{$postList->spotTitle}}" />
                 </div>
                 <div class="w-full flex flex-col justify-center items-start">
                     <span class="text-sm text-gray-500">投稿者：{{ $postList->user->name}}</span>
                     <p class="mt-3 text-lg font-medium leading-6">
-                        <!-- ここを修正する　z-indexをボタンに付与できるようにする。 -->
+                        <!-- ここを修正する z-indexをボタンに付与できるようにする。 -->
                         <a href="{{ route('googlemaps.show',$postList->id) }}" class="text-2xl text-gray-800  lg:text-2xl after:absolute after:inset-0 after:z-10">
                             {{$postList->spotTitle}}
                         </a>
                     </p>
                     <div class="w-5/6">
-                        <p class="mt-2 text-base text-gray-500 break-words line-clamp-1 overflow-hidden">
+                        <p class="mt-2 text-base text-gray-500 break-words lg:line-clamp-1 line-clamp-3 overflow-hidden">
                             {{$postList->spotDesc}}
                         </p>
                     </div>

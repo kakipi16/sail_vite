@@ -13,19 +13,18 @@
                 <input type="hidden" name="lng" id="lng">
 
                 <!-- image_url -->
-                <div class="mt-4 ">
+                <div class="mt-4">
                     <div class="flex justify-between">
                         <x-input-label for="image" :value="__('画像アップロード')" />
                         <x-input-label for="spotTitle" class="text-red-600" :value="__('必須')" />
                     </div>
 
-                    <div class="mt-1 flex items-start">
+                    <div class="mt-1 flex items-start w-[592px]">
                         <input type="file" name="image" id="imageUpload" accept="image/*" class="hidden">
-                        <button id="imageButton" type="button" class="mt-1 inline-flex items-center justify-center w-full px-3 py-2 text-base font-bold leading-6 text-white bg-btn border border-transparent rounded-full md:w-auto hover:bg-btn-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">画像を選択</button>
+                        <button id="imageButton" type="button" class="mt-1 inline-flex items-center justify-center w-full px-3 py-1 text-sm font-bold leading-6 text-white bg-btn border border-transparent rounded-full md:w-auto hover:bg-btn-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">画像を選択</button>
                         <img id="img" class="ml-2 h-[160px] w-[240px] object-scale-down border-none mt-2 bg-gray-100"
                         >
                     </div>
-
                 </div>
 
                 <!-- spotTitle -->

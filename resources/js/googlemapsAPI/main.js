@@ -1,4 +1,4 @@
-import { createPostInfoWindow, createSpotInfoContent } from "./uiService.js"
+import { createPostInfoWindow, createSpotInfoContent, createPostHeaderInfoWindow } from "./uiService.js"
 import { saveCoordinate } from "./coordinateStore.js";
 import { createSearchMarker, createClickMarker } from "./markerManager.js";
 import { renderSpots } from "./spotRenderer.js";
@@ -35,7 +35,7 @@ async function initMap() {
     map.addListener("click", async (e) => {
         const marker = await createClickMarker(e.latLng, map);
         saveCoordinate(e.latLng.lat(), e.latLng.lng());
-
+        infoWindow.setHeaderContent(createPostHeaderInfoWindow())
         infoWindow.setContent(createPostInfoWindow());
         infoWindow.open({ map, anchor: marker });
     });

@@ -15,11 +15,22 @@ export function createSpotInfoContent(spot) {
 export function createPostInfoWindow() {
     const container = document.createElement("div");
     container.innerHTML = `
-    <h1 class="text-lg font-bold mb-1">スポットを追加しよう</h1>
+    <div class="p-1">
         <a
             href = "/googlemapsForm"
             class="rounded-full bg-btn px-2 py-1 text-sm font-medium text-white"
         >投稿</a>
+    </div>
+    `;
+    return container;
+}
+
+export function createPostHeaderInfoWindow() {
+    const container = document.createElement("div");
+    container.innerHTML = `
+    <div class="pb-1">
+        <h1 class="text-base font-bold mb-1">スポットを追加しよう</h1>
+    <div/>
     `;
     return container;
 }
