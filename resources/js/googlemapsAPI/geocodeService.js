@@ -1,6 +1,6 @@
 import { saveCoordinate } from "./coordinateStore.js";
-import { createPostInfoWindow } from "./uiService";
-import { clearSearchMarker } from "./markerManager";
+import { createPostInfoWindow, createPostHeaderInfoWindow } from "./uiService.js";
+import { clearSearchMarker } from "./markerManager.js";
 
 export function geocodeAddress(geocoder, map, infoWindow, searchMarker, address) {
     clearSearchMarker();
@@ -14,6 +14,7 @@ export function geocodeAddress(geocoder, map, infoWindow, searchMarker, address)
 
         saveCoordinate(loc.lat(), loc.lng());
 
+        infoWindow.setHeaderContent(createPostHeaderInfoWindow())
         infoWindow.setContent(createPostInfoWindow());
         infoWindow.open({ map, anchor: searchMarker });
     });
