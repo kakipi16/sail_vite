@@ -2,7 +2,6 @@
     @push('scripts')
     <script type="text/javascript">
         window.spots = @json($spots);
-        console.log(window.spots);
         window.Laravel = {
             storageBase: "{{ asset('storage/') }}/"
         };

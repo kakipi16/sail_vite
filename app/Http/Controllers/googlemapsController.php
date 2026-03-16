@@ -60,6 +60,8 @@ class googlemapsController extends Controller
     {
         return view('googlemaps.edit', compact('spotPost'));
     }
+    
+
     public function update(Request $request, SpotPost $spotPost): RedirectResponse
     {
         $validated = $request->validate([
@@ -81,6 +83,8 @@ class googlemapsController extends Controller
 
         return redirect('postList');
     }
+
+
     public function destroy(Request $request, SpotPost $spotPost)
     {
         $spotPost->delete();
