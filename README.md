@@ -2,6 +2,10 @@
 オススメのスポットを共有するサイトです。
 自分のオススメの場所をマップ上で共有して色々な人に共有できます。
 <img width="1680" height="962" alt="Image" src="https://github.com/user-attachments/assets/fd7aab9b-eb54-48f1-9270-a53d14511436" />
+
+# メインの画面
+<img width="1680" height="962" alt="Image" src="https://github.com/user-attachments/assets/a0abbd18-a75d-4180-a858-8b207969f4ba" />
+
 # URL
 画面中央のログインボタンからメールアドレスとパスワードを入力してログインできます。
 
