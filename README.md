@@ -6,12 +6,15 @@
 画面中央のログインボタンからメールアドレスとパスワードを入力してログインできます。
 
 # 使用技術
-- php
-- laravel
-- PostgreSQL
-- node.js
+- PHP 8.4.17
+- Laravel 12.40.2
+- PostgreSQL 17.7
+- node.js 22.22.0
 - Docker/Docker-compose
 - Google Maps API
+    - marker
+    - Geocoding API
+    - InfoWindow
 - tailwindcss
 
 # 機能一覧
