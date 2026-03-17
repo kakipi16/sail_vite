@@ -7,16 +7,18 @@ assignees: ''
 
 ---
 
-## Overview
-Please provide an overview of the issue you are creating.
-ex) I want to adapt the style of the header.
+## 概要
+作成する課題の概要を記入してください。
+例）ヘッダーのスタイルを変更したい。
 
-## Purpose
-Describe the purpose of this issue
-ex) To style it.
 
-## Task
-Break down and manage your tasks.
+## 目的
+この課題の目的を記述してください。
+例）スタイルを設定するため。
+
+
+## タスク
+タスクを細分化して管理してください。
 - [ ] XXXX
 - [ ] XXXX
 - [ ] XXXX
