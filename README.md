@@ -26,9 +26,6 @@
 - node.js 22.22.0
 - Docker/Docker-compose
 - Google Maps API
-    - marker
-    - Geocoding API
-    - InfoWindow
 - tailwindcss
 
 # 機能一覧
