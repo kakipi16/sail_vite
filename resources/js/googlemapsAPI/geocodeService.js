@@ -6,13 +6,12 @@ export function geocodeAddress(geocoder, map, infoWindow, searchMarker, address)
     clearSearchMarker();
 
     geocoder.geocode({ address }).then(({ results }) => {
-        const loc = results[0].geometry.location;
-
-        map.setCenter(loc);
-        searchMarker.setPosition(loc);
+        const location = results[0].geometry.location;
+        map.setCenter(location);
+        searchMarker.setPosition(location);
         searchMarker.setMap(map);
 
-        saveCoordinate(loc.lat(), loc.lng());
+        saveCoordinate(location.lat(), location.lng());
 
         infoWindow.setHeaderContent(createPostHeaderInfoWindow())
         infoWindow.setContent(createPostInfoWindow());

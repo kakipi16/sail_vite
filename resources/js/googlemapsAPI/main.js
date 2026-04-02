@@ -21,7 +21,7 @@ async function initMap() {
     const { InfoWindow } = await google.maps.importLibrary("maps");
     infoWindow = new InfoWindow();
     const searchMarker = createSearchMarker(map);
-
+    
     //mapの生成と初期位置を設定
     map = new Map( mapElement, {
         center: { lat: 34.716216939136, lng: 137.65626712680375 },
