@@ -1,4 +1,7 @@
 <x-app-layout>
+    @push
+    @vite('resources/js/googlemapsAPI/form.js', 'resources/js/postfile/imgShow.js', 'resources/js/postfile/noFileName.js')
+    @endpush
     <main class=" w-full min-h-[calc(100vh-80px-80px)] flex items-center justify-center">
         <div class="min-h-scree flex items-center justify-center">
             <form id="SpotForm" method="POST" action="{{ route('SpotStore') }}" enctype="multipart/form-data" class="w-[640px] max-w-md sm:max-w-xl md:max-w-2xl bg-white rounded-2xl shadow-lg p-6">

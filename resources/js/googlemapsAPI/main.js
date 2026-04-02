@@ -15,8 +15,6 @@ async function initMap() {
     const mapElement = document.getElementById("map");
     const searchForm = document.getElementById("searchForm");
     const inputText = document.getElementById("address");
-    //PHPとJSON経由でデータベースから取得
-    const spots = window.spots || [];
 
     //必要なライブラリの読み込み
     const { Map } = await google.maps.importLibrary("maps");
@@ -58,6 +56,6 @@ window.initMap = initMap;
 
 // Google Mapsと Geocode スクリプトを読み込み
 const script = document.createElement("script");
-script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap&libraries=maps,marker`;
+script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&loading=async&callback=initMap&libraries=maps,marker`;
 script.async = true;
 document.head.appendChild(script);

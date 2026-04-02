@@ -1,12 +1,11 @@
 <x-app-layout>
     @push('scripts')
     <script type="text/javascript">
-        window.spots = @json($spots);
         window.Laravel = {
             storageBase: "{{ asset('storage/') }}/"
         };
     </script>
-    @vite('resources/js/googlemapsAPI/main.js')
+    @vite('resources/js/googlemapsAPI/main.js', 'resources/js/googlemapsAPI/spotRenderer.js')
     @endpush
 
     <div class="relative w-full overflow-hidden" style="height: calc(100vh - 145px);">

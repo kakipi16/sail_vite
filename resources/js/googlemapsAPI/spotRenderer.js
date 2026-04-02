@@ -19,7 +19,7 @@ export async function renderSpots(map) {
                     gmpClickable: true,
                 });
 
-                marker.addListener("click", () => {
+                marker.addEventListener("gmp-click", () => {
                     sidebar.innerHTML = ``
                     const content = createPostSidebar(spot);
                     sidebar.appendChild(content);
