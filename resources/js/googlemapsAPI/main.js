@@ -4,8 +4,7 @@ import { createSearchMarker, createClickMarker } from "./markerManager.js";
 import { renderSpots } from "./spotRenderer.js";
 import { geocodeAddress } from "./geocodeService.js";
 
-const apiKey = import.meta.env.VITE_GOOGLE_MAP_API_KEY;
-const mapId = import.meta.env.VITE_GOOGLE_MAP_ID;
+const mapId = window.googleMapId;
 let map;
 let infoWindow;
 let geocoder;
@@ -53,9 +52,3 @@ async function initMap() {
 }
 
 window.initMap = initMap;
-
-// Google Mapsと Geocode スクリプトを読み込み
-const script = document.createElement("script");
-script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&loading=async&callback=initMap&libraries=maps,marker`;
-script.async = true;
-document.head.appendChild(script);

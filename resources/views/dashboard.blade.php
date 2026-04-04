@@ -1,11 +1,19 @@
 <x-app-layout>
     @push('scripts')
+    <script>
+        // PHPから本番環境のSecretsを確実に渡す
+        window.googleMapsApiKey = "{{ env('VITE_GOOGLE_MAP_API_KEY') }}";
+        window.googleMapId = "{{ env('VITE_GOOGLE_MAP_ID') }}";
+    </script>
+
+    <script async src="https://maps.googleapis.com/maps/api/js?key={{ env('VITE_GOOGLE_MAP_API_KEY') }}&loading=async&callback=initMap&libraries=maps,marker"></script>
+
     <script type="text/javascript">
         window.Laravel = {
             storageBase: "{{ asset('storage/') }}/"
         };
     </script>
-    @vite('resources/js/googlemapsAPI/main.js', 'resources/js/googlemapsAPI/spotRenderer.js')
+    @vite(['resources/js/googlemapsAPI/main.js', 'resources/js/googlemapsAPI/spotRenderer.js'])
     @endpush
 
     <div class="relative w-full overflow-hidden" style="height: calc(100vh - 145px);">
