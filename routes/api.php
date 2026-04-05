@@ -15,8 +15,5 @@ use App\Http\Controllers\ApiLocationController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-Route::apiResource('posts', ApiLocationController::class);
+// OK: 認証済みユーザーのみアクセスできる
+Route::middleware('auth:sanctum')->apiResource('posts', ApiLocationController::class);
