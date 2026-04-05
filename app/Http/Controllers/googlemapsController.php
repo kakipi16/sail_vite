@@ -64,6 +64,9 @@ class googlemapsController extends Controller
 
     public function update(Request $request, SpotPost $spotPost): RedirectResponse
     {
+        if ($spotPost->user_id !== Auth::id()) {
+            abort(403);
+        }
         $validated = $request->validate([
             'spotTitle' => ['nullable', 'string', 'max:20'],
             'spotDesc' => ['nullable', 'string', 'max:255'],
@@ -87,6 +90,9 @@ class googlemapsController extends Controller
 
     public function destroy(Request $request, SpotPost $spotPost)
     {
+        if ($spotPost->user_id !== Auth::id()) {
+            abort(403);
+        }
         $spotPost->delete();
         $request->session()->flash('message', '投稿を削除しました');
         return back();
