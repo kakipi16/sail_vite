@@ -9,7 +9,7 @@
     
     @vite(['resources/js/googlemapsAPI/main.js', 'resources/js/googlemapsAPI/spotRenderer.js'])
 
-    <script async src="https://maps.googleapis.com/maps/api/js?key={{ $mapsApiKey }}&loading=async&callback=initMap&libraries=maps,marker"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key={{ $mapsApiKey }}&loading=async&libraries=maps,marker"></script>
     @endpush
     <script type="text/javascript">
         window.Laravel = { storageBase: "{{ asset('storage/') }}/" };

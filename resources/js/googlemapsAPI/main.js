@@ -25,7 +25,8 @@ async function initMap() {
     map = new Map( mapElement, {
         center: { lat: 34.716216939136, lng: 137.65626712680375 },
         zoom: 10,
-        mapId: mapId
+        mapId: mapId,
+        clickableIcons: false,
     });
     renderSpots(map);
 
@@ -53,6 +54,10 @@ async function initMap() {
 
 window.initMap = initMap;
 
-if (typeof google !== 'undefined' && google.maps && google.maps.importLibrary) {
+if (typeof google !== 'undefined' && google.maps) {
+    // すでにGoogleの準備ができていれば実行
     initMap();
+} else {
+    // まだなら、Google Mapsのタグが読み込み終わるのを待ってから実行
+    window.addEventListener('load', initMap);
 }

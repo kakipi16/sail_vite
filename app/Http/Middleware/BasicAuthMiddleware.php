@@ -15,8 +15,8 @@ class BasicAuthMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = env('BASIC_AUTH_USER');
-        $pass = env('BASIC_AUTH_PASS');
+        $user = config('auth.basic_auth.user');
+        $pass = config('auth.basic_auth.pass');
         if ($request->getUser() !== $user || $request->getPassword() !== $pass) {
             $headers = ['WWW-Authenticate' => 'Basic'];
             return response('Invalid credentials.', 401, $headers);

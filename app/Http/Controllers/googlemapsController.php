@@ -9,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class googlemapsController extends Controller
+class GoogleMapsController extends Controller
 {
     //
     public function googlemapsForm(): View
@@ -88,7 +88,7 @@ class googlemapsController extends Controller
         ]);
 
         // 入力があった項目だけを取り出す（nullを除外）
-        $updateData = array_filter($validated);
+        $updateData = array_filter($validated, fn($v) => !is_null($v));
 
         // 画像がある場合のみ処理
         if ($request->hasFile('image')) {

@@ -11,22 +11,20 @@
         </div>
         <!-- Navigation Links -->
         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex sm:items-center">
-            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('ホーム') }}
-            </x-nav-link>
-            <x-nav-link :href="route('googlemaps.postList')" :active="request()->routeIs('googlemaps.postList')" class="hidden">
-                {{ __('投稿一覧') }}
-            </x-nav-link>
-            <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
-                {{ __('プロフィール') }}
-            </x-nav-link>
+        @auth
+            <x-nav-link :href="route('dashboard')">ホーム</x-nav-link>
+            <x-nav-link :href="route('profile.edit')">プロフィール</x-nav-link>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <x-nav-link :href="route('logout')" onclick="event.preventDefault();this.closest('form').submit();" class="hidden">
-                    {{ __('ログアウト') }}
+                <x-nav-link :href="route('logout')"
+                    onclick="event.preventDefault();this.closest    ('form').submit();">
+                    ログアウト
                 </x-nav-link>
             </form>
-        </div>
+        @else
+            <x-nav-link :href="route('login')">ログイン</x-nav-link>
+            <x-nav-link :href="route('register')">新規登録</x-nav-link>
+        @endauth
 
         <!-- Hamburger -->
         <div class="-me-2 flex items-center sm:hidden">

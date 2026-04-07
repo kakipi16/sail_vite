@@ -112,4 +112,10 @@ return [
 
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
 
+    // config/auth.php などに追加
+    'basic_auth' => [
+        'user' => env('BASIC_AUTH_USER'),
+        'pass' => env('BASIC_AUTH_PASS'),
+    ],
+
 ];

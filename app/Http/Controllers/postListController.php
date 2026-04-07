@@ -10,12 +10,13 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 
-class postListController extends Controller
+class PostListController extends Controller
 {
     //settingsの表示をします。
     public function postList(): View
     {
-        $postLists = SpotPost::all();
+        // OK: with() で事前にユーザー情報をまとめて取得する
+        $postLists = SpotPost::with('user')->get();
         $user_id = Auth::id();
         return view('googlemaps.postList',  compact('postLists', 'user_id'));
     }
