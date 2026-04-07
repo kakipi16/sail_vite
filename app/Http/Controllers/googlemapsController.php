@@ -18,8 +18,17 @@ class googlemapsController extends Controller
     }
     public function index()
     {
+        $user = auth()->user();
+        $user->tokens()->delete();
+        $token = $user->createToken('map-api-token')->plainTextToken;
+
         $spots = SpotPost::with('user')->get();
-        return view('dashboard', compact('spots'));
+        return view('dashboard', [
+            'spots'          => $spots,
+            'mapsApiKey'     => config('services.google.maps_api_key'),
+            'mapsId'         => config('services.google.maps_id'),
+            'apiToken' => $token,
+        ]);
     }
     /**
      * @throws \Illuminate\Validation\ValidationException
@@ -29,8 +38,10 @@ class googlemapsController extends Controller
         //バリレーション
         $request->validate([
             'spotTitle' => ['required', 'string', 'max:20'],
-            'spotDesc' => ['nullable', 'string', 'max:255'],
-            'image' => ['required', 'image'],
+            'spotDesc'  => ['nullable', 'string', 'max:255'],
+            'image'     => ['required', 'image'],
+            'lat'       => ['required', 'numeric', 'between:-90,90'],
+            'lng'       => ['required', 'numeric', 'between:-180,180'],
         ]);
         // ディレクトリ名
         $dir = 'img';
@@ -58,6 +69,9 @@ class googlemapsController extends Controller
 
     public function edit(SpotPost $spotPost)
     {
+        if ($spotPost->user_id !== Auth::id()) {
+            abort(403);
+        }
         return view('googlemaps.edit', compact('spotPost'));
     }
     

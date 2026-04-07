@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
 class SpotPost extends Model
 {
+    use HasApiTokens;
     //
     protected $fillable = [
         'user_id',

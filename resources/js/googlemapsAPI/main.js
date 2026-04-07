@@ -52,3 +52,7 @@ async function initMap() {
 }
 
 window.initMap = initMap;
+
+if (typeof google !== 'undefined' && google.maps && google.maps.importLibrary) {
+    initMap();
+}

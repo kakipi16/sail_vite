@@ -34,5 +34,10 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    
+    'google' => [
+    'maps_api_key' => env('VITE_GOOGLE_MAP_API_KEY'),
+    'maps_id'      => env('VITE_GOOGLE_MAP_ID'),
+    ],
 
 ];

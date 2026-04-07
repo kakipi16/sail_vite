@@ -4,7 +4,15 @@ export async function renderSpots(map) {
     try {
         const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
         const sidebar = document.getElementById('sidebar');
-        const response = await fetch('api/posts');
+        const response = await fetch('api/posts', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${window.apiToken}`
+            }
+        });
+        if(!response.ok) throw new Error(`HTTPエラー: ${response.status}`);
+        
         const data = await response.json();
 
         if(data.status) {
