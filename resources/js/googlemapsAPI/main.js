@@ -53,8 +53,6 @@ async function initMap() {
 }
 
 window.addEventListener('load', () => {
-    // もし google オブジェクトがいれば実行、いなければ少し待つなどの処理も可能ですが
-    // 基本的に 'load' イベントなら外部スクリプトも読み込み済みです
     if (typeof google !== 'undefined' && google.maps) {
         initMap();
     }
