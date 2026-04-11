@@ -46,7 +46,7 @@
                         <x-input-label for="spotDesc" :value="__('スポット説明')" />
                         <x-input-label for="spotDesc" class="text-gray-400" :value="__('任意')" />
                     </div>
-                    <x-textarea id="spotDesc" class="block mt-1 w-full h-40" type="textarea" name="spotDesc" :value="old('spotDesc')" required />
+                    <x-textarea id="spotDesc" class="block mt-1 w-full h-40" type="textarea" name="spotDesc" :value="old('spotDesc')"/>
                     <x-input-error :messages="$errors->get('spotDesc')" class="mt-2" />
                 </div>
 
