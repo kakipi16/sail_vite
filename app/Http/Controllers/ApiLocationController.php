@@ -14,6 +14,12 @@ class ApiLocationController extends Controller
     {
         //
         $spotPosts = SpotPost::with('user')->get();
+        $spotPosts->transform(function ($post) {
+        if ($post->imag_url) {
+            $post->imag_url = asset('storage/' . $post->imag_url);
+        }
+        return $post;
+        });
         return response()-> json([
             'status' => true,
             'spotPosts' => $spotPosts
@@ -23,9 +29,6 @@ class ApiLocationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    //ここのリクエストを調べる 
-    // use App\Http\Requests\StoreBlogRequest;
-    // StoreBlogRequestとは？
     public function store(Request $request)
     {
         //ディレクトリ名
