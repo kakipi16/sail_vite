@@ -5,15 +5,11 @@
         window.googleMapId      = "{{ $mapsId }}";
         window.apiToken         = "{{ $apiToken }}";
     </script>
-
     
     @vite(['resources/js/googlemapsAPI/main.js', 'resources/js/googlemapsAPI/spotRenderer.js'])
 
     <script src="https://maps.googleapis.com/maps/api/js?key={{ $mapsApiKey }}&loading=async&libraries=maps,marker" defer></script>
     @endpush
-    <script type="text/javascript">
-        window.Laravel = { storageBase: "{{ asset('storage/') }}/" };
-    </script>
     <div class="relative w-full overflow-hidden" style="height: calc(100vh - 145px);">
 
         <form id="searchForm" class="absolute z-20 w-[320px] lg:w-[520px] top-4 left-1/2 -translate-x-1/2">
