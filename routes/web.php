@@ -4,7 +4,7 @@ use App\Http\Controllers\GoogleMapsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettingsController;
-use App\Http\Controllers\postListController;
+use App\Http\Controllers\PostListController;
 
 Route::get('/', function () {
     return view('welcome');
