@@ -5,7 +5,7 @@
 
 ## URL
 画面中央のログインボタンからメールアドレスとパスワードを入力してログインできます。  
-後ほど挿入
+https://sail-vite.fly.dev/
 
 ## メイン画面
 <img width="1680" height="962" alt="Image" src="https://github.com/user-attachments/assets/a0abbd18-a75d-4180-a858-8b207969f4ba" />
