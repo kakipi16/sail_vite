@@ -37,4 +37,4 @@ https://sail-vite.fly.dev/
     - マーカー吹き出し表示(infowindow)
 ## ER図
 <img width="898" height="559" alt="Image" src="https://github.com/user-attachments/assets/b2810ade-e801-49eb-8614-fd5fd13dced6" />
-- 投稿にUserIdを追加し、CRUDを行いやすいように作成しました。
+- 投稿にUserIdを紐づけし、個別の投稿にCRUDを行いやすいように作成しました。
