@@ -35,3 +35,6 @@ https://sail-vite.fly.dev/
     - 位置情報検索機能(geocoder)
     - マーカー表示(marker)
     - マーカー吹き出し表示(infowindow)
+## ER図
+<img width="898" height="559" alt="Image" src="https://github.com/user-attachments/assets/b2810ade-e801-49eb-8614-fd5fd13dced6" />
+- 投稿にUserIdを追加し、CRUDを行いやすいように作成しました。
